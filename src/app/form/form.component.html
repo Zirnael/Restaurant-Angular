@@ -1,0 +1,80 @@
+<form [formGroup]="myform" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+        <label>* Dish name</label>
+        <input type="text"
+                class="form-control"
+                formControlName="dishName"
+                required>
+    </div>
+
+    <div class="form-group">
+        <label>* Kitchen type</label>
+        <select class="form-control"
+                formControlName="kitchenType"
+                required>
+            <option value="">Select kitchen type</option>
+            <option *ngFor="let type of kitchenTypes" [value] = "type">
+                {{type}}
+            </option>
+        </select>
+    </div>
+
+
+    <div class="form-group">
+        <label>* Category</label>
+        <select class="form-control"
+                formControlName="category"
+                required>
+            <option value="">Select category</option>
+            <option *ngFor="let category of categories" [value] = "category">
+                {{category}}
+            </option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>* Ingredients</label>
+        <input type="text"
+                class="form-control"
+                formControlName="ingredients"
+                required>
+    </div>
+
+    <div class="form-group">
+        <label>* Max the restaurant can serve</label>
+        <input type="number"
+                class="form-control"
+                formControlName="max_possible"
+                required>
+    </div>
+
+    <div class="form-group">
+        <label>* Price (in gr)</label>
+        <input type="number"
+                class="form-control"
+                formControlName="price"
+                required>
+    </div>
+
+    <div class="form-group">
+        <label>Description</label>
+        <input type="text"
+                class="form-control"
+                formControlName="description">
+    </div>
+
+    <div class="form-array" formArrayName="links">
+        <div class = "form-group" *ngFor="let linkForm of getLinksArray().controls;index as i">
+            <label *ngIf="i==0">*Link to photo</label>
+            <label *ngIf="i>0">Link to photo</label>
+            <input *ngIf="i==0" type = "text" [formControl]="getLinkControle(i)" class="form-control" required>
+            <input *ngIf="i>0" type="text" [formControl]="getLinkControle(i)" class="form-control">
+        </div>
+    </div>
+    <button type = "button" (click)="addLink()">Next link</button>
+    <span class="full-width">* - required</span>
+    <button type="submit" [disabled]="!myform.valid" *ngIf="dish==undefined">Add dish</button>
+    <button type="submit" [disabled]="!myform.valid" *ngIf="dish!=undefined">Modify dish</button>
+    
+</form>

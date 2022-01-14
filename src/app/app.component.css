@@ -1,0 +1,14 @@
+
+.border{
+    width:80%;
+    margin:auto;
+    border:1px solid black;
+    padding: 2vw;
+    border-radius: 1rem;
+    background-color:white;
+}
+.background{
+    padding:3vw;
+    background-color: aquamarine;
+    min-height: 80vh;
+}

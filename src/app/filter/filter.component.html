@@ -1,0 +1,26 @@
+
+
+<form [formGroup]="filterForm">
+    <div>
+        <h1>Kitchen Type</h1>
+        <div *ngFor= "let type of kitchenTypes,index as i">
+            <input type="checkbox" id = "{{type}}" class="checkbox" [formControl]="getKTAC(i)">
+            <label for="{{type}}">{{type}}</label>
+        </div>
+    </div>
+    <div>
+        <h1>Category</h1>
+        <div *ngFor = "let category of categories,index as i">
+            <input type="checkbox" id="{{category}}" class="checkbox" [formControl]="getCAC(i)">
+            <label for = "{{category}}">{{category | titlecase}}</label>
+        </div>
+    </div>
+    <div>
+        <h2>Min Price: {{minPrice.value}}</h2>
+        <input min="{{cheapPrice()}}" max="{{expensivePrice()}}" class="slider" type=range formControlName="minPrice">
+        <h2>Max Price: {{maxPrice.value}}</h2>
+        <input min = "{{cheapPrice()}}" max="{{expensivePrice()}}" class = "slider" type=range formControlName="maxPrice">
+        <h2>Min Rating: {{minRating.value}}</h2>
+        <input type = "range" class="slider" formControlName="minRating">
+    </div>
+</form>

@@ -1,0 +1,12 @@
+
+button{
+    margin-right: 5px;
+    font-size: 1.5vw;
+}
+span{
+    background-color: rgb(163, 255, 255);
+    font-size: 1.5vw;
+}
+.low{
+    background-color: orange;
+}

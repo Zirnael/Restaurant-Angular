@@ -1,0 +1,80 @@
+<div *ngIf="dish">
+    <a class="btn-back" routerLink="/dishes">Go back</a>
+    <h1>Dish: {{dish.name | uppercase}}</h1>
+    <span>
+        Max amount the restaurant can provide: {{dish.max_possible}}
+    </span>
+    <h2 class="price">Price: {{price(dish)}} {{currencyIcon()}}</h2>
+    <span>
+        Ingredients: {{dish.ingredients}}
+    </span>
+    <span>
+        Category: {{dish.category}}
+    </span>
+    <span>
+        Description: {{dish.description}}
+    </span>
+    <span>Kitchen type: {{dish.kitchen_type|uppercase}}</span>
+    <span>Currently in cart: {{getInfo(dish)}} / {{dish.max_possible}}</span>
+    <Button class="removeButton" (click)="removeClick(dish)" [class.inactive]="getInfo(dish)==0" [disabled]="getInfo(dish)==0">
+        -
+    </Button>
+    <Button class="addButton" (click)="addClick(dish)" [class.inactive]="getInfo(dish)==dish.max_possible" 
+            [class.close]="dish.max_possible-getInfo(dish) < 4"[disabled]="getInfo(dish)==dish.max_possible">
+        +
+    </Button>
+    
+    <div class="rate">
+        <input type = "range" name="rating" class="slider" [formControl]="getFormRate()">
+        <button [disabled] = "getRate()==null" (click)="setRate()">
+            <span>Rate: {{getRate()}}</span>
+        </button>
+        <span *ngIf="userRating">Your rating: {{userRating}}</span>
+        <span>Rating: {{rating()}} based on {{ratingCount()}} ratings</span>    
+    </div>
+    
+    <button class="btn delete" (click)="delete(dish)">Delete dish</button>
+    
+    <a routerLink="/mod/{{dish.name}}">
+        <button type="button" class="btn">Modify dish</button>
+    </a>
+    <div class="container">
+        <div *ngFor="let source of dish.link">
+            <img src="{{source}}" alt="zdjecie">
+        </div>
+    </div>  
+    
+    <form [formGroup]="getCommentForm()" (ngSubmit)="onSubmit()">
+        <div class="formTitle">
+            <label>Title*: </label>
+            <input type="text" class="form-control" formControlName="title" required>
+        </div>
+        <div class="formDesc">
+            <label>Description*: </label>
+            <textarea formControlName="description" required minlength="50" maxlength="500"></textarea>
+        </div>
+        <div class= formDate>
+            <label>Date of order: </label>
+            <input type="date" class="form-control" formControlName="date">
+        </div>
+        <button type="submit">Add comment</button>
+        <div *ngIf="!commentForm.valid">
+            <div *ngFor="let error of errors">
+                <span>{{error}}</span>
+            </div>
+        </div>
+        <div *ngIf="commentForm.valid">
+            <span>Can submit</span>
+        </div>
+    </form>
+    <h1>Comments</h1>
+    <div *ngFor="let comment of dish.comments" class="comment">
+        <h2>{{comment.title}}</h2>
+        <h2 *ngIf="comment.date!==undefined">{{comment.date}}</h2>
+        <span>{{comment.description}}</span>
+    </div>
+</div>
+<div *ngIf="!dish">
+    <a class="btn-back" routerLink="/dishes">Go back</a>
+    <span>Dish was not found</span>
+</div>

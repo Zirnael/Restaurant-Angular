@@ -1,0 +1,51 @@
+<ul>
+    <li>
+        <div class="container">
+            <h1 class="buttonOffset"></h1>
+            <h1 class="photoOffset"></h1>
+            <span>
+                Potrawa
+            </span>
+            <span>
+                Kuchnia
+            </span>
+            <span>
+                Cena
+            </span>
+            <span>
+                Ilosc
+            </span>
+            <h1 class = "adderOffset"></h1>   
+            
+        </div>
+    </li>
+    <span class = "line">&nbsp;</span>
+    <li *ngFor="let dish of currentDishes();index as i">
+        <div class="container" [class.cheap]="cheap(dish)" [class.expensive]="expensive(dish)">
+            <button class="delete" (click)="delete(dish)">Delete</button>
+            <a routerLink="/details/{{dish.name}}">
+                <img src={{dish.link[0]}} alt="zdjecie">
+            </a>
+            <span>{{dish.name | uppercase}}</span>
+            <span>{{dish.kitchen_type|uppercase}}</span>
+            <span>{{price(dish)}} {{currencyIcon()}}</span>
+            <span>{{getInfo(dish)}}/{{dish.max_possible}}</span>
+            <Button class="removeButton" (click)="removeClick(dish)" [class.inactive]="getInfo(dish)==0" [disabled]="getInfo(dish)==0">
+                -
+            </Button>
+            <Button class="addButton" (click)="addClick(dish)" [class.inactive]="getInfo(dish)==dish.max_possible" 
+                    [class.close]="dish.max_possible-getInfo(dish) < 4"[disabled]="getInfo(dish)==dish.max_possible">
+                +
+            </Button>
+
+        </div>
+    </li>
+</ul>
+
+<div class="navigation">
+    <button class="paginationButtons" (click)="firstPage()" [disabled]="isFirstPage()">First</button>
+    <button class="paginationButtons" (click)="prevPage()" [disabled]="isFirstPage()">Previous</button>
+    <span>Current Page {{currentPage+1}}</span>
+    <button class="paginationButtons" (click)="nextPage()" [disabled]="isLastPage()">Next</button>
+    <button class="paginationButtons" (click)="lastPage()" [disabled]="isLastPage()">Last</button>
+</div>

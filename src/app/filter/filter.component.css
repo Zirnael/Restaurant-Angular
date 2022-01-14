@@ -1,0 +1,41 @@
+form{
+    display:grid;
+    grid-template-columns: calc(100%/3) calc(100%/3) calc(100%/3);
+}
+.checkbox{
+    width:1.5vw;
+    height:1.5vw;
+    margin:0.3vw;
+}
+
+label{
+    font-size: 2vw;
+}
+h1{ 
+    font-size:3vw;
+    margin-bottom: 1vw;
+}
+h2{ 
+    font-size:2vw;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 50%;
+    height: 2vw;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    margin:0.5vw 0 2.5vw;
+  }
+  
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 2vw;
+    height: 2vw;
+    background: #04AA6D;
+    cursor: pointer;
+  }

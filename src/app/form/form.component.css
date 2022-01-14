@@ -1,0 +1,19 @@
+.form-group{
+    display:grid;
+    grid-template-columns: 40% 30%;
+    padding: 0.5vw;
+}
+.full-width{
+    display: block;
+}
+input, select{
+    border-width:0.15vw;
+}
+option,select,.form-group,span,button,input{
+    font-size: 1.5vw;
+}
+button{
+    position: relative;
+    right:0;
+    margin:0.5vw;
+}

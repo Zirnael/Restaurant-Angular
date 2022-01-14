@@ -1,0 +1,24 @@
+<div class="bar">
+
+    <a routerLink = "/home" [class.active]="home()">
+        <img src="https://image.flaticon.com/icons/png/512/88/88282.png">
+    </a>
+    <a routerLink = "/dishes" [class.active]="dishes()">
+        <img src="https://cdn-icons-png.flaticon.com/512/2771/2771460.png">
+    </a>
+    <a routerLink = "/add" [class.active]="add()">
+        <img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/plus-512.png">
+    </a>
+    
+    <a routerLink = "/cart" [class.active]="cart()">
+        <img src="https://image.flaticon.com/icons/png/512/18/18636.png">
+    </a>
+    <button (click)="toggle('USD')" [class.chosen]="currentCurrency=='USD'">
+        $
+    </button>
+    <button (click)="toggle('EUR')" [class.chosen]="currentCurrency=='EUR'">
+        €
+    </button>
+    
+    <span [class.low]="amount<10">Currently chosen: {{amount}}</span>
+</div>

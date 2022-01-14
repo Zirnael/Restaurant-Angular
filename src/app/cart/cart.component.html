@@ -1,0 +1,8 @@
+<div *ngFor="let dish of products">
+    <span *ngIf="details[dish.name]>0">
+        {{dish.name}} {{details[dish.name]}}
+    </span>
+</div>
+<div *ngIf="isEmpty">
+    <span>Your cart is currently empty. Go shopping!</span>
+</div>

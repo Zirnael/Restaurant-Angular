@@ -1,0 +1,77 @@
+
+.slider{
+    width: 50%;
+}
+img{
+    width:100%;
+}
+span{
+    display:block;
+}
+.container{
+    display:grid;
+    grid-template-columns: auto auto auto;
+    overflow:hidden;
+    gap:1vw;
+}
+h1{
+    display:block;
+    text-align:center;
+    font-size: 5vw;
+}
+.addButton,.removeButton{
+    border-radius: 1rem;
+}
+.addButton{
+    color:black;
+    background-color: greenyellow;
+}
+.removeButton{
+    background-color:red;
+}
+.close{
+    background-color: yellow;   
+}
+.inactive{
+    
+    background-color: white;
+}
+.addButton,.removeButton{
+    width:3vw;
+    height:3vw;
+}
+.price{
+    float:right;
+    font-size:3vw;
+    position:relative;
+    right: 5vw;
+}
+.comment{
+    border:1px solid black;
+    padding:0.5vw;
+    margin:0.5vw;
+    overflow:auto;
+}
+.btn-back{
+    display:block;
+    border:1px solid black;
+    border-radius: 1rem;
+    padding: 0.5vw;
+    width:fit-content;
+    text-align:center;
+    text-decoration: none;
+}
+.btn{
+    border:1px solid black;
+    border-radius: 1rem;
+    padding: 0.8vw;
+    margin: 0.5vw;
+
+}
+.formTitle, .formDesc, .formDate{
+    display:grid;
+    grid-template-columns: 40% 30%;
+}
+.formDesc input{
+    overflow:scroll;
+}
