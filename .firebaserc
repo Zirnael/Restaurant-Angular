@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "wdai-database": {
+      "hosting": {
+        "Project": [
+          "wdai-database"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "wdai-database"
+  }
+}
